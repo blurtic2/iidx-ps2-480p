@@ -113,6 +113,7 @@ the game from the start (the patches change start-up code, so loading a savestat
   switch changes the output format together with it.
 
 Every changed word is listed with a comment in [`patch480p.py`](patch480p.py).
+Details: [docs/technical.md](docs/technical.md).
 
 ## Disclaimer
 
