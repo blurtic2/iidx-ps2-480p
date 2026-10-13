@@ -98,8 +98,6 @@ the game from the start (the patches change start-up code, so loading a savestat
 - **13, 14 and 15:** full-screen movies (opening, ending) do not leave enough video memory for a 24-bit picture,
   so during those movies the output switches to 16-bit with dithering, and back to 24-bit afterwards.
   Menus and gameplay are always 24-bit.
-- Some of the game's own artwork contains fine checkerboard dithering. The original 480i output blurred it;
-  at 480p it is visible as it was drawn.
 - PCSX2 does not reproduce everything the real GS does (for example it does not dither 24-bit frame buffers),
   so final checks were done on real hardware.
 
