@@ -76,11 +76,15 @@ python patch480p.py iso "beatmania IIDX 13 DistorteD.iso" --480
 - Running it again on a patched ISO switches between the two variants.
 - If the executable is not one of the supported ones, or was changed by something else, nothing is written.
 
-### PCSX2
+### PCSX2 (extra, for previewing and testing)
 
-`python patch480p.py pnach <folder>` writes `.pnach` files (also attached to each release). Put them in PCSX2's
-`patches` folder, enable **one** of the two 480p groups in the game's properties, and boot the game from the start
-(the patches change start-up code, so loading a savestate is not enough).
+These patches are made for real hardware. PCSX2 `.pnach` files are included in each release as an extra, so the
+result can be previewed or problems reproduced without touching an ISO (a patched ISO also runs in PCSX2).
+PCSX2 does not show everything exactly as a real PS2 does, so please judge image quality on real hardware.
+
+Put the files in PCSX2's `patches` folder, enable **one** of the two 480p groups in the game's properties, and boot
+the game from the start (the patches change start-up code, so loading a savestate is not enough).
+`python patch480p.py pnach <folder>` writes the same files.
 
 ## Using it on a real PS2
 
