@@ -58,16 +58,23 @@ left to shift); horizontal adjustment still works.
 
 ## How to apply
 
-Use an ISO dumped from your own disc. The xdelta patches require the exact Redump-verified ISO listed above;
-the script only needs the game's executable inside the ISO to be unmodified.
+Use an ISO dumped from your own disc. Use **one** of the two methods below; both give the same result.
+Normally, use xdelta. The Python script is a development tool, and a fallback for when xdelta cannot be used.
 
-### xdelta (easiest)
+### xdelta (recommended)
 
-1. Download the `.xdelta` for your game and variant from the [Releases](../../releases) page.
-2. Apply it to your ISO with an xdelta patcher such as Delta Patcher or xdelta UI.
+The xdelta patches only apply to the **exact** Redump-verified ISOs listed above.
 
-### Python script
+1. Download `iidx-ps2-480p-…-xdelta.zip` from the [Releases](../../releases) page and extract it.
+2. Pick the file for your game and variant:
+   - `…_480p.xdelta`: **480p** (default, 448 lines)
+   - `…_480p-480lines.xdelta`: **480p 480 lines** (all 480 lines)
+3. Apply it to your original ISO with an xdelta patcher such as Delta Patcher or xdelta UI.
 
+### Python script (development / fallback)
+
+The script used to develop and check the patch. It also works when your ISO differs from the Redump one and the
+xdelta does not apply: it only needs the game's executable inside the ISO to be unmodified.
 Requires Python 3.8 or newer. The ISO is patched in place, so work on a copy.
 
 ```
@@ -75,9 +82,12 @@ python patch480p.py iso "beatmania IIDX 13 DistorteD.iso"
 python patch480p.py iso "beatmania IIDX 13 DistorteD.iso" --480
 ```
 
+- Without options it makes the **480p** variant (default, 448 lines).
+- With `--480` it makes the **480p 480 lines** variant (all 480 lines). See [Variants](#variants) for the difference.
+- Running it again on a patched ISO changes it to the variant you ask for: for example, `--480` turns a
+  448-line ISO into the 480-line variant, and running it again without options turns it back.
 - The game is detected automatically. Only a few dozen 4-byte words in the executable are changed;
   the ISO size and all other files stay the same.
-- Running it again on a patched ISO switches between the two variants.
 - If the executable is not one of the supported ones, or was changed by something else, nothing is written.
 
 ### PCSX2 (extra, for previewing and testing)
