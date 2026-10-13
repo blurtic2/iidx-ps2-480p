@@ -1,0 +1,24 @@
+# Game data must never be committed
+*.iso
+*.bin
+*.cue
+*.chd
+SLPM_*
+SLPS_*
+*.elf
+
+# PCSX2 GS dumps / savestates contain game graphics
+*.gs
+*.gs.zst
+*.gs.xz
+*.p2s
+
+# Build output (attach xdelta / pnach to GitHub Releases instead)
+build/
+dist/
+*.xdelta
+*.pnach
+
+# Python
+__pycache__/
+*.pyc
