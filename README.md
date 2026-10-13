@@ -49,6 +49,10 @@ game actually renders it. Unlike forcing 480p with GSM, nothing is line-doubled.
 | **480p** (default) | 448, the same area as the original game | CRT / TVs with overscan; the in-game screen position option keeps working |
 | **480p 480 lines** | all 480 rendered lines (16 more at the top and bottom) | upscalers, capture devices, displays without overscan |
 
+![480p (448 lines) on the left, 480p 480 lines on the right](docs/images/variants-448-480.png)
+
+*Left: 480p (448 lines). Right: 480p 480 lines.*
+
 In the 480-line variant the in-game *vertical* screen position option has no effect (there is no spare area
 left to shift); horizontal adjustment still works.
 
