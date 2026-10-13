@@ -1,6 +1,6 @@
 # beatmania IIDX PS2 — 네이티브 480p 패치
 
-[English](README.md) | **한국어**
+[English](README.md) | **한국어** | [日本語](README.ja.md)
 
 PlayStation 2용 beatmania IIDX(9th style ~ 16 EMPRESS + PREMIUM BEST)가 실기에서 **24bit 색상의 네이티브 480p**로
 출력되도록 하는 비공식 패치입니다.

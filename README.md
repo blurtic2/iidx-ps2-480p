@@ -1,6 +1,6 @@
 # beatmania IIDX PS2 — native 480p patch
 
-**English** | [한국어](README.ko.md)
+**English** | [한국어](README.ko.md) | [日本語](README.ja.md)
 
 Unofficial patches that make the PlayStation 2 releases of beatmania IIDX (9th style – 16 EMPRESS + PREMIUM BEST)
 output **native 480p in 24-bit color** on real hardware.
