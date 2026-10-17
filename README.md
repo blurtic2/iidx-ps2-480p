@@ -9,6 +9,13 @@ The original games draw every frame at 640×480, then shrink it to 224 lines per
 These patches skip that step: the full image is copied 1:1 and sent out as 480p, so the picture is as sharp as the
 game actually renders it. Unlike forcing 480p with GSM, nothing is line-doubled.
 
+![Original 480i on the left, patched 480p on the right](docs/images/compare-480i-480p-1.jpg)
+![Original 480i on the left, patched 480p on the right](docs/images/compare-480i-480p-2.jpg)
+
+*Left: original (480i). Right: patched (480p). Captured from a real PS2.*
+
+▶ **Comparison video (YouTube):** https://www.youtube.com/watch?v=z_yfshK9HGE
+
 ## Supported games
 
 | Game | Serial | PCSX2 CRC | Redump ISO CRC32 | Redump ISO MD5 |

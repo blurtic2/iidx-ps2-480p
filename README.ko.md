@@ -9,6 +9,13 @@ PlayStation 2용 beatmania IIDX(9th style ~ 16 EMPRESS + PREMIUM BEST)가 실기
 이 패치는 그 과정을 없애고 그린 화면을 1:1로 복사해 480p로 내보내므로, 게임이 실제로 그리는 선명도 그대로 보입니다.
 GSM으로 480p를 강제할 때처럼 줄을 복제하지 않습니다.
 
+![왼쪽 원본 480i, 오른쪽 패치 적용 480p](docs/images/compare-480i-480p-1.jpg)
+![왼쪽 원본 480i, 오른쪽 패치 적용 480p](docs/images/compare-480i-480p-2.jpg)
+
+*왼쪽: 원본(480i). 오른쪽: 패치 적용(480p). 실제 PS2에서 캡처했습니다.*
+
+▶ **비교 영상 (YouTube):** https://www.youtube.com/watch?v=z_yfshK9HGE
+
 ## 지원 게임
 
 | 게임 | 시리얼 | PCSX2 CRC | Redump ISO CRC32 | Redump ISO MD5 |

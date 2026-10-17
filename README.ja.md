@@ -9,6 +9,13 @@ PlayStation 2版 beatmania IIDX（9th style〜16 EMPRESS + PREMIUM BEST）を、
 このパッチはその処理をなくし、描画した画面を1:1でコピーして480pで出力するため、ゲームが実際に描いている精細さのまま表示されます。
 GSMで480pを強制したときのようなライン複製は起きません。
 
+![左がオリジナルの480i、右がパッチ適用後の480p](docs/images/compare-480i-480p-1.jpg)
+![左がオリジナルの480i、右がパッチ適用後の480p](docs/images/compare-480i-480p-2.jpg)
+
+*左：オリジナル（480i）。右：パッチ適用後（480p）。PS2実機からキャプチャしています。*
+
+▶ **比較動画（YouTube）：** https://www.youtube.com/watch?v=z_yfshK9HGE
+
 ## 対応ソフト
 
 | ソフト | 型番 | PCSX2 CRC | Redump ISO CRC32 | Redump ISO MD5 |
