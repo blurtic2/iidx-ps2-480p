@@ -165,6 +165,20 @@ GAME9 = [
     (0x0015dd28, 0x24030060, 0x24030000, 'B->A copy TEX1_2 0x60 (bilinear) -> 0 (nearest)'),
     (0x00138f7c, 0x8784840c, 0x0000202d, 'main loop: field flag -> 0 (no per-field half-line offset)'),
 ]
+# beatmania (USA) is built from 9th style's engine: every 9th site exists with the same code around it, only
+# moved (located by matching the surrounding instructions). The main loop reads the field flag from another
+# gp offset, so that one original word differs.
+USA_SITES = {
+    0x138f7c: 0x13587c, 0x15d840: 0x158e20, 0x15d844: 0x158e24, 0x15d854: 0x158e34, 0x15d884: 0x158e64,
+    0x15d8ac: 0x158e8c, 0x15d9a0: 0x158f80, 0x15d9a8: 0x158f88, 0x15d9c4: 0x158fa4, 0x15dd28: 0x159308,
+    0x15dd90: 0x159370, 0x15dd94: 0x159374, 0x15dda4: 0x159384, 0x15ddd4: 0x1593b4, 0x15ddfc: 0x1593dc,
+    0x15de60: 0x159440, 0x15e48c: 0x159a6c, 0x15e564: 0x159b44,
+}
+USA_OLD = {0x13587c: 0x87848384}  # lh a0,-31868(gp)
+
+def port_usa(patches):
+    return [(USA_SITES[va], USA_OLD.get(USA_SITES[va], old), new, note) for va, old, new, note in patches]
+
 GAME10 = [
     (0x00163204, 0x24050001, 0x24050000, 'sceGsResetGraph: interlace 1 -> 0 (progressive), ffmode follows a1 -> 0'),
     (0x00163210, 0x24060002, 0x24060050, 'sceGsResetGraph: omode NTSC(2) -> 480p(0x50)'),
@@ -206,6 +220,9 @@ VERSIONS = {
     'SLPM_659.46': dict(
         title='beatmania IIDX 9th style', serial='SLPM-65946', crc='519805E0',
         patches24=GAME9 + lib_patches_24(0x100330) + POOL24_9TH),
+    'SLUS_212.39': dict(
+        title='beatmania (USA)', serial='SLUS-21239', crc='66294801',
+        patches24=port_usa(GAME9) + lib_patches_24(0x100310) + port_usa(POOL24_9TH)),
     'SLPM_661.80': dict(
         title='beatmania IIDX 10th style', serial='SLPM-66180', crc='B308CA2F',
         patches24=GAME10 + lib_patches_24(0x1002f0) + z_patch(0x16325c, 7)),
@@ -264,6 +281,7 @@ VERSIONS = {
 SLL_V0, SLL_S0 = 0x00022840, 0x00102840          # sll a1,v0,1 / sll a1,s0,1 (position adjust * 2)
 EXTRA480 = {  # version: (adjust sll sites, V=16 sites, V=464 sites, pool-init a2 sites, mode-1 pool-end sites)
     'SLPM_659.46': ([(0x15d840, SLL_V0), (0x15dd90, SLL_V0)], [0x15d844, 0x15dd94], [0x15d854, 0x15dda4], [], []),
+    'SLUS_212.39': ([(0x158e20, SLL_V0), (0x159370, SLL_V0)], [0x158e24, 0x159374], [0x158e34, 0x159384], [], []),
     'SLPM_661.80': ([(0x1630f8, SLL_V0), (0x163758, SLL_V0)], [0x1630fc, 0x16375c], [0x16310c, 0x16376c], [0x163818], []),
     'SLPM_664.26': ([(0x1673c8, SLL_V0), (0x167a28, SLL_V0)], [0x1673cc, 0x167a2c], [0x1673dc, 0x167a3c], [0x167ae8], []),
     'SLPM_666.21': ([(0x15d224, SLL_V0)], [0x15d228], [0x15d238], [0x15d880], []),
@@ -310,7 +328,7 @@ PLAN_KEYS = ('patches24', 'patches480')
 # The 0x200-byte libgraph message block (DMA-timeout strings; DIMX + the hybrid routine are written over it)
 # is byte-identical in every supported ELF, so a CRC of it stands in for the original words of the cave.
 ELF_INFO = {  # name: (ELF size, libgraph message block address)
-    'SLPM_659.46': (907952, 0x1bed10),  'SLPM_661.80': (1204656, 0x209310), 'SLPM_664.26': (1940144, 0x2bfa90),
+    'SLPM_659.46': (907952, 0x1bed10),  'SLUS_212.39': (924336, 0x1bcd10), 'SLPM_661.80': (1204656, 0x209310), 'SLPM_664.26': (1940144, 0x2bfa90),
     'SLPM_666.21': (1419056, 0x213690), 'SLPM_668.28': (1846064, 0x232590), 'SLPM_669.95': (1967792, 0x23f210),
     'SLPM_551.17': (2075312, 0x258110), 'SLPM_552.21': (1757744, 0x261910), 'SLPM_552.22': (1777968, 0x266b10),
 }

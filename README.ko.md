@@ -2,7 +2,7 @@
 
 [English](README.md) | **한국어** | [日本語](README.ja.md)
 
-PlayStation 2용 beatmania IIDX(9th style ~ 16 EMPRESS + PREMIUM BEST)가 실기에서 **24bit 색상의 네이티브 480p**로
+PlayStation 2용 beatmania IIDX(9th style ~ 16 EMPRESS + PREMIUM BEST)와 beatmania (USA)가 실기에서 **24bit 색상의 네이티브 480p**로
 출력되도록 하는 비공식 패치입니다.
 
 원래 게임은 매 프레임을 640×480으로 그린 뒤, 필드마다 224줄로 줄여서 480i로 출력합니다.
@@ -29,6 +29,7 @@ GSM으로 480p를 강제할 때처럼 줄을 복제하지 않습니다.
 | beatmania IIDX 15 DJ TROOPERS | SLPM-55117 | 1393B807 | 4fa612be | 6cc843d439b8b55fee7962dd6caaae0f |
 | beatmania IIDX 16 EMPRESS (Disc 1) | SLPM-55221 | 44111A43 | c4895ba7 | 30c14ab6e2de3331977fa248438dc294 |
 | beatmania IIDX 16 PREMIUM BEST (Disc 2) | SLPM-55222 | 57E9E985 | cb9ad964 | b33b813bee010edbd3aa1676e03aad6c |
+| beatmania (USA) | SLUS-21239 | 66294801 | 6b5a24e3 | a84538536572097c9f5af4175b034f11 |
 
 3rd~8th style은 240p 출력이라 대상이 아닙니다.
 
@@ -46,6 +47,7 @@ GSM으로 480p를 강제할 때처럼 줄을 복제하지 않습니다.
 | 15 DJ TROOPERS | 6a35e096900dc6e7842f7aa86366ba0f5fe78dfd |
 | 16 EMPRESS (Disc 1) | 92d95574a6a35a908cc3255a997a15f126993ada |
 | 16 PREMIUM BEST (Disc 2) | b23f9799b2cb6106b45c992928c97d6f2e4d3a8b |
+| beatmania (USA) | 497cd0a20420d270047a77009efc7c48ce95f727 |
 
 </details>
 

@@ -4,6 +4,9 @@ This document explains how the games draw their picture, what the patch changes 
 debug it. For using the patch, see the [README](../README.md). Every changed word is listed, with a comment,
 in [`patch480p.py`](../patch480p.py); this document explains the reasoning behind those lists.
 
+beatmania (USA) (`SLUS_212.39`) runs on 9th style's engine. Everything said about 9th below applies to it; its
+patch sites are 9th's, moved, and were located by matching the surrounding code (`USA_SITES` in the script).
+
 Addresses are EE virtual addresses in the boot ELF (`SLPM_xxx.xx`). The ELF has one loadable segment that
 starts at file offset `0x80` and is loaded at `0x00100000`, so file offset = address − `0x100000` + `0x80`.
 
