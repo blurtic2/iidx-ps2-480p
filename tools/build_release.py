@@ -125,7 +125,9 @@ def main():
                 P.patch_iso(work, plan_key)
                 target = hash_file(work)
                 out = os.path.join(a.out, 'xdelta', '%s_%s_%s.xdelta' % (short, P.VERSIONS[name]['serial'], suffix))
-                subprocess.run([xdelta, '-e', '-9', '-f', '-s', src, work, out], check=True)
+                # -A: no application header, which would otherwise record the local source/target paths
+                # (this also makes the output the same on every build)
+                subprocess.run([xdelta, '-e', '-9', '-A', '-f', '-s', src, work, out], check=True)
                 if decode_hash(xdelta, src, out) != target:
                     sys.exit('   decoded result of %s does not match the patched ISO' % out)
                 print('   %s (%d bytes) verified' % (os.path.basename(out), os.path.getsize(out)))
