@@ -160,7 +160,7 @@ GAME9 = [
     (0x0015ddd4, 0x24037900, 0x24037200, 'init B->A copy sprite top Y'),
     (0x0015ddfc, 0x34028700, 0x34028e00, 'init B->A copy sprite bottom Y'),
     # The B->A copy texture env (TEX1_2) was bilinear: right for the original 2:1 shrink, but a 1:1 copy
-    # with bilinear samples on texel edges and blurs every pixel half-and-half. Point sampling = exact copy.
+    # with bilinear samples on texel edges and blurs every pixel half-and-half. Nearest (point sampling) = exact copy.
     # (the game overwrites the TEX1_2 word right after sceGsSetDefTexEnv, so patch that store)
     (0x0015dd28, 0x24030060, 0x24030000, 'B->A copy TEX1_2 0x60 (bilinear) -> 0 (nearest)'),
     (0x00138f7c, 0x8784840c, 0x0000202d, 'main loop: field flag -> 0 (no per-field half-line offset)'),

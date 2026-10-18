@@ -130,7 +130,7 @@ the game from the start (the patches change start-up code, so loading a savestat
 - The output mode is switched from 480i to 480p (`sceGsResetGraph`), and the display buffer becomes a full
   640×448 (or 640×480) 24-bit buffer instead of a 640×224 one.
 - The per-frame copy from the 640×480 draw buffer is changed from a 2:1 shrink with a per-field half-line offset
-  to an exact 1:1 copy with point sampling.
+  to an exact 1:1 copy with nearest (point sampling) filtering.
 - To fit the bigger display buffer into the 4 MB of video memory, the draw buffer is moved to page 352 and
   (10th and later) the Z buffer is moved into the draw buffer's old place. The texture pool and the effects that
   reference these buffers directly are adjusted to match.

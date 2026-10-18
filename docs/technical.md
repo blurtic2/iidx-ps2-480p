@@ -71,7 +71,7 @@ the 224-line buffer A, which is why it looks stair-stepped: the full-resolution 
 | B at page 352 instead of 70 | libgraph `sceGsSetDefDBuffDc` | a 24-bit 640×448 A (140 pages) does not fit in front of B (§4) |
 | Z at page 140 instead of 352 (10th+) | game init | Z moves into the space B left |
 | Copy sprite Y 1936..2160 → 1824..2272 | flip code (per-frame and init copies) | 1:1 copy of 448 rows instead of a 2:1 shrink |
-| `TEX1_2` 0x60→0 | game init, the store right after `sceGsSetDefTexEnv` | bilinear sampling at 1:1 lands on texel edges and blurs every pixel; point sampling copies exactly |
+| `TEX1_2` 0x60 (bilinear) → 0 (nearest) | game init, the store right after `sceGsSetDefTexEnv` | bilinear sampling at 1:1 lands on texel edges and blurs every pixel; nearest (point sampling) copies exactly |
 | Field / half-line offset → 0 | flip code (9th: main loop field flag) | progressive output has no fields |
 
 The copy coordinates are GS primitive coordinates in 12.4 fixed point with the context-2 offset applied, so
