@@ -76,7 +76,7 @@ Normally, use xdelta. The Python script is a development tool, and a fallback fo
 The xdelta patches only apply to the **exact** Redump-verified ISOs listed above.
 
 1. Download `iidx-ps2-480p-…-xdelta.zip` from the [Releases](../../releases) page and extract it.
-2. Pick the file for your game and variant:
+2. Pick the file for your game and variant (see [Variants](#variants) for the difference):
    - `…_480p.xdelta`: **480p** (default, 448 lines)
    - `…_480p-480lines.xdelta`: **480p 480 lines** (all 480 lines)
 3. Apply it to your original ISO with an xdelta patcher such as Delta Patcher or xdelta UI.

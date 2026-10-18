@@ -74,7 +74,7 @@ GSM으로 480p를 강제할 때처럼 줄을 복제하지 않습니다.
 xdelta 패치는 위 표의 Redump 검증본과 **정확히 같은 ISO**에만 적용됩니다.
 
 1. [Releases](../../releases) 페이지에서 `iidx-ps2-480p-…-xdelta.zip`을 받아 압축을 풉니다.
-2. 게임과 판에 맞는 파일을 고릅니다.
+2. 게임과 판에 맞는 파일을 고릅니다. 두 판의 차이는 [두 가지 판](#두-가지-판)을 참고하세요.
    - `…_480p.xdelta`: **480p** (기본, 448줄)
    - `…_480p-480lines.xdelta`: **480p 480 lines** (480줄 전체)
 3. Delta Patcher, xdelta UI 같은 xdelta 패처로 원본 ISO에 적용합니다.
