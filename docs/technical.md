@@ -179,15 +179,22 @@ The switch is done by a small routine (`_emit_layout_switch` + `hybrid_patches` 
 
 ## 8. The 480-line variant
 
-B always contains 480 rendered lines; the original copied rows 16..463. The 480-line variant:
+B always contains 480 rendered lines; the original copied rows 16..463. The 16 spare rows above and below are
+what the in-game vertical screen-position option uses: it shifts the copied window by `2 × offset` lines
+(`sll a1, v0/s0, 1`). The default 448-line variant keeps that window, so the option keeps working; this, and
+CRT overscan hiding the edges anyway, is why 448 lines stays the default.
 
-- copies rows 0..480 (texture V 16→0 and 464→480, sprite Y 1808..2288), with A 640×480 (150 pages) and
-  `DISPLAY.DY` left at 35;
-- moves everything behind A by 10 pages: Z 150, pool start +10 (pool-init size 224→256 lines; 9th: start
-  page 150), and in 13th–15th movie mode B at 80 and the pool end 370→380;
-- disables the in-game vertical screen-position option: the game shifts the copied window by `2 × offset`
-  (`sll a1, v0/s0, 1`), and with all rows copied there is nothing left to shift into. That instruction becomes
-  `a1 = 0`. Horizontal adjustment is not affected.
+The 480-line variant:
+
+- copies rows 0..480 (texture V 16→0 and 464→480, sprite Y 1808..2288) into A 640×480 (150 pages; the
+  display-buffer and context-2 heights become 480). `DISPLAY.DY` stays at libgraph's 35, because 480 lines
+  fill the 480p frame exactly;
+- moves everything behind A by 10 pages: Z 150 (all the Z sites of §6), pool start +10 (pool-init size
+  224→256 lines; 9th: start page 150, so its pool is 202 pages), and in 13th–15th movie mode B at 80 and the
+  pool end 370→380, which still ends below Z at 384;
+- leaves B at page 352, so the screen-capture `TEX0` fix of §6 is the same in both variants;
+- disables the vertical screen-position option: with all rows copied there is nothing left to shift into.
+  The shift instruction becomes `a1 = 0`. Horizontal adjustment is not affected.
 
 It is built from the 448 list by `to480()` plus the per-version sites in `EXTRA480`.
 
@@ -209,11 +216,12 @@ It is built from the 448 list by `to480()` plus the per-version sites in `EXTRA4
 - Each patch entry is `(address, original word, new word, comment)`. Before writing, every site must hold either
   its original word or a value of one of the variants, and the ELF size must match (`ELF_INFO`). The routine
   area has no single original word; instead the whole `0x200`-byte message block must match its CRC32
-  (`bc537649`, identical in all nine ELFs) unless the routine is already there.
+  (`bc537649`, identical in all supported ELFs) unless the routine is already there.
 - Switching variants: words used by the other variant but not by the chosen one are restored to their
   originals (`plan_words`).
 - `tools/build_release.py` checks each ISO against its Redump hashes, patches a temporary copy, makes the xdelta
-  for both variants with `xdelta3 -e -9`, and decodes each one again to check that it reproduces the patched ISO.
+  for both variants with `xdelta3 -e -9 -A` (`-A`: no header with local file paths), and decodes each one again
+  to check that it reproduces the patched ISO.
 
 ## 11. Adding a version or chasing a glitch
 
